@@ -1,4 +1,4 @@
-// import http-status-codes
+// import                        http-status-code
 const { StatusCodes } = require('http-status-codes');
 // import custom-api
 const CustomAPIError = require('./custom-api-error');
