@@ -1,10 +1,10 @@
-const Categories = require('./model');
-const { getAllCategories, createCategories, getOneCategories } = require('../../../services/mongoose/categories');
+const { StatusCodes } = require('http-status-codes');
+const { getAllCategories, createCategories, getOneCategories, updateCategories, deleteCategories } = require('../../../services/mongoose/categories');
 
 const create = async (req, res, next) => {
   try {
     const result = await createCategories(req);
-    res.status(201).json({
+    res.status(StatusCodes.CREATED).json({
       data: result,
     });
   } catch (err) {
@@ -15,7 +15,7 @@ const create = async (req, res, next) => {
 const index = async (req, res, next) => {
   try {
     const result = await getAllCategories();
-    res.status(200).json({
+    res.status(StatusCodes.OK).json({
       data: result,
     });
   } catch (err) {
@@ -27,7 +27,7 @@ const find = async (req, res, next) => {
   try {
     const result = await getOneCategories(req);
 
-    res.status(200).json({
+    res.status(StatusCodes.OK).json({
       data: result,
     });
   } catch (err) {
@@ -37,18 +37,9 @@ const find = async (req, res, next) => {
 
 const update = async (req, res, next) => {
   try {
-    const { id } = req.params;
-    const { name } = req.body;
+    const result = await updateCategories(req);
 
-    const result = await Categories.findOneAndUpdate(
-      {
-        _id: id,
-      },
-      { name },
-      { new: true, runValidators: true }
-    );
-
-    res.status(200).json({
+    res.status(StatusCodes.OK).json({
       data: result,
     });
   } catch (err) {
@@ -58,9 +49,8 @@ const update = async (req, res, next) => {
 
 const destroy = async (req, res, next) => {
   try {
-    const { id } = req.params;
-    const result = await Categories.findByIdAndRemove(id);
-    res.status(200).json({
+    const result = await deleteCategories(req);
+    res.status(StatusCodes.OK).json({
       data: result,
     });
   } catch (err) {
