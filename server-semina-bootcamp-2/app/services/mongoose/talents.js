@@ -20,7 +20,7 @@ const getAllTalents = async (req) => {
       select: '_id name',
     })
     .select('_id name role image');
-  console.log(result);
+
   return result;
 };
 
