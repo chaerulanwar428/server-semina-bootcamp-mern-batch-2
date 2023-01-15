@@ -20,7 +20,7 @@ const getAllTalents = async (req) => {
       select: '_id name',
     })
     .select('_id name role image');
-
+  console.log(result);
   return result;
 };
 
@@ -70,7 +70,7 @@ const updateTalents = async (req) => {
   });
 
   // apa bila check true / data talents sudah ada maka kita tampilkan error bad request dengan message pembicara nama duplikat
-  if (check) throw new BadRequestError('pembicara sudah terdaftar');
+  if (check) throw new BadRequestError('pembicara nama duplikat');
 
   const result = await Talents.findOneAndUpdate({ _id: id }, { name, image, role }, { new: true, runValidators: true });
 

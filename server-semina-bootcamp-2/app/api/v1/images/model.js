@@ -8,4 +8,4 @@ let imageSchema = Schema(
   { timestamps: true }
 );
 
-module.exports = model('image', imageSchema);
+module.exports = model('Image', imageSchema);
