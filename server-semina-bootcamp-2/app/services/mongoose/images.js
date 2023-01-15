@@ -1,5 +1,5 @@
 const Images = require('../../api/v1/images/model');
-
+const { NotFoundError } = require('../../errors');
 // 1. kita gunakan cara init
 // 2. generate url setalah submit baru kita simpan
 
