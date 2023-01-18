@@ -105,7 +105,7 @@ const updateEvents = async (req) => {
   });
 
   // apa bila check true / data Events sudah ada maka kita tampilkan error bad request dengan message pembicara duplikat
-  if (check) throw new BadRequestError('judul event duplikat');
+  if (check) throw new BadRequestError('judul acara sudah terdaftar');
 
   const result = await Events.findOneAndUpdate(
     { _id: id },
