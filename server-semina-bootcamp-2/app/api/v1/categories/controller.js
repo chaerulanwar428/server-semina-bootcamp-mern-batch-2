@@ -1,9 +1,12 @@
+// import services categories
+const { getAllCategories, getOneCategories, updateCategories, createCategories, deleteCategories } = require('../../../services/mongoose/categories');
+
 const { StatusCodes } = require('http-status-codes');
-const { getAllCategories, createCategories, getOneCategories, updateCategories, deleteCategories } = require('../../../services/mongoose/categories');
 
 const create = async (req, res, next) => {
   try {
     const result = await createCategories(req);
+
     res.status(StatusCodes.CREATED).json({
       data: result,
     });
@@ -14,7 +17,8 @@ const create = async (req, res, next) => {
 
 const index = async (req, res, next) => {
   try {
-    const result = await getAllCategories();
+    const result = await getAllCategories(req);
+
     res.status(StatusCodes.OK).json({
       data: result,
     });
@@ -50,6 +54,7 @@ const update = async (req, res, next) => {
 const destroy = async (req, res, next) => {
   try {
     const result = await deleteCategories(req);
+
     res.status(StatusCodes.OK).json({
       data: result,
     });
