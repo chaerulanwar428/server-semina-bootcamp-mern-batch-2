@@ -1,4 +1,5 @@
 const Orders = require('../../api/v1/orders/model');
+const { NotFoundError } = require('../../errors');
 
 const getAllOrders = async (req) => {
   const { limit = 10, page = 1, startDate, endDate } = req.query;
@@ -33,6 +34,8 @@ const getAllOrders = async (req) => {
   return { data: result, pages: Math.ceil(count / limit), total: count };
 };
 
+
+
 module.exports = {
-  getAllOrders,
+  getAllOrders
 };
