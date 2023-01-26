@@ -1,4 +1,4 @@
-const { signupParticipant } = require('../../../services/mongoose/participants');
+const { signupParticipant,activateParticipant,signinParticipant,getAllEvents,getOneEvent,getAllOrders } = require('../../../services/mongoose/participants');
 
 const { StatusCodes } = require('http-status-codes');
 
@@ -14,65 +14,65 @@ const signup = async (req, res, next) => {
   }
 };
 
-// const activeParticipant = async (req, res, next) => {
-//   try {
-//     const result = await activateParticipant(req);
+const activeParticipant = async (req, res, next) => {
+  try {
+    const result = await activateParticipant(req);
 
-//     res.status(StatusCodes.OK).json({
-//       data: result,
-//     });
-//   } catch (err) {
-//     next(err);
-//   }
-// };
+    res.status(StatusCodes.OK).json({
+      data: result,
+    });
+  } catch (err) {
+    next(err);
+  }
+};
 
-// const signin = async (req, res, next) => {
-//   try {
-//     const result = await signinParticipant(req);
+const signin = async (req, res, next) => {
+  try {
+    const result = await signinParticipant(req);
 
-//     res.status(StatusCodes.OK).json({
-//       data: { token: result },
-//     });
-//   } catch (err) {
-//     next(err);
-//   }
-// };
+    res.status(StatusCodes.OK).json({
+      data: { token: result },
+    });
+  } catch (err) {
+    next(err);
+  }
+};
 
-// const getAllLandingPage = async (req, res, next) => {
-//   try {
-//     const result = await getAllEvents(req);
+const getAllLandingPage = async (req, res, next) => {
+  try {
+    const result = await getAllEvents(req);
 
-//     res.status(StatusCodes.OK).json({
-//       data: result,
-//     });
-//   } catch (err) {
-//     next(err);
-//   }
-// };
+    res.status(StatusCodes.OK).json({
+      data: result,
+    });
+  } catch (err) {
+    next(err);
+  }
+};
 
-// const getDashboard = async (req, res, next) => {
-//   try {
-//     const result = await getAllOrders(req);
+const getDashboard = async (req, res, next) => {
+  try {
+    const result = await getAllOrders(req);
 
-//     res.status(StatusCodes.OK).json({
-//       data: result,
-//     });
-//   } catch (err) {
-//     next(err);
-//   }
-// };
+    res.status(StatusCodes.OK).json({
+      data: result,
+    });
+  } catch (err) {
+    next(err);
+  }
+};
 
-// const getDetailLandingPage = async (req, res, next) => {
-//   try {
-//     const result = await getOneEvent(req);
+const getDetailLandingPage = async (req, res, next) => {
+  try {
+    const result = await getOneEvent(req);
 
-//     res.status(StatusCodes.OK).json({
-//       data: result,
-//     });
-//   } catch (err) {
-//     next(err);
-//   }
-// };
+    res.status(StatusCodes.OK).json({
+      data: result,
+    });
+  } catch (err) {
+    next(err);
+  }
+};
 
 // const getAllPayment = async (req, res, next) => {
 //   try {
@@ -99,5 +99,11 @@ const signup = async (req, res, next) => {
 // };
 
 module.exports = {
-  signup
+  signup,
+  activeParticipant,
+  signin,
+  getAllLandingPage,
+  getDashboard,
+  getDetailLandingPage,
+  getDashboard
 };
