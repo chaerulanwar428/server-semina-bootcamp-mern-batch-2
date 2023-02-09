@@ -5,10 +5,10 @@ const getAllOrders = async (req) => {
   const { limit = 10, page = 1, startDate, endDate } = req.query;
   let condition = {};
 
-//   let match = {};
+  let match = {};
 
   if (req.user.role !== 'owner') {
-    condition = {...condition, 'historyEvent.organizer.organizer': req.user.organizer};
+    match={_id: req.user.organizer};
   }
 
   if (startDate && endDate) {

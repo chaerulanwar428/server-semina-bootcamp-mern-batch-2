@@ -194,13 +194,13 @@ const checkoutOrder = async (req) => {
   return result;
 };
 
-// const getAllPaymentByOrganizer = async (req) => {
-//   const { organizer } = req.params;
+const getAllPaymentByOrganizer = async (req) => {
+  const { organizer } = req.params;
 
-//   const result = await Payments.find({ organizer: organizer });
+  const result = await Payments.find({ organizer: organizer });
 
-//   return result;
-// };
+  return result;
+};
 
 module.exports = {
   signupParticipant,
@@ -210,5 +210,5 @@ module.exports = {
   getOneEvent,
   getAllOrders,
   checkoutOrder,
-//   getAllPaymentByOrganizer,
+  getAllPaymentByOrganizer,
 };
